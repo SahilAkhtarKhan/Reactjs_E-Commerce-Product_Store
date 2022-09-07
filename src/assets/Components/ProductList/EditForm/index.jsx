@@ -1,30 +1,46 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import "./style.css";
 
-export default function EditForm({ editElem }) {
+export default function EditForm({ editElem, onUpdate }) {
   const [editData, setEditData] = useState({});
-  const [editcategory, setEditcategory] = useState("");
 
-  // function editFormData(e){
+  useEffect(() => {
+    setEditData(editElem);
+  }, [editElem]);
 
-  // }
+  /**
+   * @description This method will handle the form behaviour & updates
+   * @param {*} e
+   */
+  function handleUpdate(e) {
+    e.preventDefault();
+    onUpdate(editData);
+  }
+
+  /**
+   * @description This method will handle the changes in the edit form
+   * @param {*} e
+   */
+  function handleOnchange(e) {
+    const { value, name } = e.target;
+    console.log("LN15", editData);
+    setEditData((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  }
   return (
     <>
-      <form
-        style={{
-          border: "1px solid black",
-          width: "fit-content",
-          padding: "25px",
-        }}
-      >
+      <form>
         <div>
           <label>Category</label>
           <input
             type="text"
-            defaultValue={
-              Object.keys(editElem).length === 0 ? "" : editElem.category
-            }
-            onChange={(e) => setEditcategory(e.target.value)}
+            value={editData.category}
+            onChange={handleOnchange}
             name="category"
           />
         </div>
@@ -32,10 +48,8 @@ export default function EditForm({ editElem }) {
           <label>Title</label>
           <input
             type="text"
-            defaultValue={
-              Object.keys(editElem).length === 0 ? "" : editElem.title
-            }
-            onChange={(e) => setEditData(e.target.value)}
+            value={editData.title}
+            onChange={handleOnchange}
             name="title"
           />
         </div>
@@ -43,10 +57,8 @@ export default function EditForm({ editElem }) {
           <label>Description</label>
           <textarea
             name="description"
-            defaultValue={
-              Object.keys(editElem).length === 0 ? "" : editElem.description
-            }
-            // onChange={(e) => setEditData(e.target.value)}
+            value={editData.description}
+            onChange={handleOnchange}
             cols="30"
             rows="5"
           ></textarea>
@@ -55,13 +67,11 @@ export default function EditForm({ editElem }) {
           <label>Price</label>
           <input
             type="number"
-            defaultValue={
-              Object.keys(editElem).length === 0 ? "" : editElem.price
-            }
-            // onChange={(e) => setEditData(e.target.value)}
-            name="number"
+            value={editData.price}
+            onChange={handleOnchange}
+            name="price"
           />
-          <button>Update</button>
+          <button onClick={handleUpdate}>Update</button>
         </div>
       </form>
     </>

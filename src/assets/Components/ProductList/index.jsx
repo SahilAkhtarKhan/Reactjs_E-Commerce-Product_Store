@@ -16,7 +16,10 @@ export default function ProductList(props) {
     setCopyAPIProductList,
   } = props;
 
-  // handling searching products
+  /**
+   * @description This method is use to search the products
+   * @param {*} e
+   */
   function handleSearchedProduct(e) {
     setSearchProduct(e.target.value); // updating changed data from input
     if (searchProduct == "") {
@@ -40,7 +43,10 @@ export default function ProductList(props) {
     }
   }
 
-  // handling delete
+  /**
+   * @description This method is use to delete the specific products
+   * @param {*} e
+   */
   function handleDelete(id) {
     const copyList = [...APIProductList];
     const newList = copyList.filter((data) => {
@@ -49,19 +55,34 @@ export default function ProductList(props) {
     setAPIProductList([...newList]);
   }
 
-  // handle edit
-
+  /**
+   * @description This method is use to edit the products
+   * @param {*} e
+   */
   function handleEdit(item) {
-    setEditElem({ ...item });
-    // console.log(editElement);
+    setEditElem(item);
   }
 
-  // handling toggle switch
-  function handleToggleSwitch(e) {}
+  /**
+   * @description This method is use to update the products
+   * @param {*} e
+   */
+  function onUpdate(item) {
+    setAPIProductList((products) => {
+      return products.map((element) => {
+        if (element.id == item.id) {
+          return item;
+        }
+        return element;
+      });
+    });
+    setEditElem({});
+    alert("Product updated succesfully");
+  }
 
   return (
     <>
-      <EditForm editElem={editElem} /> <br />
+      <EditForm editElem={editElem} onUpdate={onUpdate} /> <br />
       <span className="searchBar">
         <input
           className="searchInput"
@@ -76,7 +97,6 @@ export default function ProductList(props) {
         APIProductList={APIProductList}
         setAPIProductList={setAPIProductList}
       />
-      <button onClick={handleToggleSwitch}>Toggle Switch</button>
       <div className="parent-cards">
         {APIProductList.map((item) => {
           return (

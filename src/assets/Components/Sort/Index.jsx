@@ -4,7 +4,10 @@ export default function Sort({ APIProductList, setAPIProductList }) {
   const [sortType, setSortType] = useState("Select sort type");
   const sortTypeList = ["category", "title", "price"];
 
-  // Sorting
+  /**
+   * @description This method is use to sort the product list
+   * @param {*} e
+   */
   function handleSort(e) {
     const { value } = e.target;
     setSortType(value);
