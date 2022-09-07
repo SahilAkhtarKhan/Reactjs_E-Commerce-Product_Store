@@ -1,0 +1,86 @@
+.searchBar {
+  background-color: rgb(255, 255, 255);
+  margin: 0px auto;
+  width: 50%;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  box-shadow: 2px 3px 10px 0px;
+  padding: 0.2em 0.6em;
+}
+
+.searchInput {
+  border: none;
+  padding: 1em;
+  outline: none;
+  border-radius: 0.6em;
+  width: -webkit-fill-available;
+}
+
+header {
+  padding: 1rem 0;
+}
+
+.main-content {
+  margin-top: 2rem;
+}
+
+.parent-cards {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+.product {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 1rem 3rem;
+  margin: 1rem 0;
+}
+
+.product-detail {
+  padding: 1rem 2rem 0rem 2rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.product-price {
+  font-weight: bold;
+  font-size: 85%;
+  width: auto;
+}
+
+.product-price sub {
+  bottom: 0;
+}
+
+.product-parent {
+  width: 95%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+.category-img-price {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 14%;
+}
+
+.description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.edit-delete-btn {
+  width: fit-content;
+  position: relative;
+  top: 18px;
+}
+
+button {
+  margin: 0px 10px;
+  background-color: cornflowerblue;
+}
