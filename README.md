@@ -6,4 +6,4 @@
 #### 2- Show data in tabular form.
 #### 3- Implemented search funationality.
 #### 4- Implemented sorting functionality based on category, title & price.
-#### 5- Implemented Edit & Delete functionality.
+#### 5- Implemented Edit, Update & Delete functionality.
